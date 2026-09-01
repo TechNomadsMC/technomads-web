@@ -1,0 +1,59 @@
+language: "en-US"
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+    auto_incremental_review: true
+    auto_pause_after_reviewed_commits: 5
+    labels:
+      - "!do-not-review"
+    ignore_title_keywords:
+      - "WIP"
+      - "DO NOT MERGE"
+      - "[skip review]"
+    ignore_usernames:
+      - "dependabot[bot]"
+      - "github-actions[bot]"
+  path_filters:
+    - "!**/package-lock.json"
+    - "!**/.next/**"
+    - "!**/dist/**"
+    - "!public/downloads/**"
+    - "!**/*.zip"
+    - "!**/*.mrpack"
+  path_instructions:
+    - path: "src/app/api/**"
+      instructions: "Verify authentication and authorization, input validation, idempotency, safe redirects, rate limits, descriptive error handling, and that external failures cannot corrupt persisted state."
+    - path: "src/lib/firebase/**"
+      instructions: "Check Firebase Admin versus client boundaries, least-privilege access, transaction correctness, stable document identities, and prevention of accidental credential exposure."
+    - path: "src/lib/integrations/**"
+      instructions: "Check timeouts, retries, signature or bearer verification, failure isolation, audit logging, and safe handling of Stripe, Discord, Microsoft, Minecraft, and RCON responses."
+    - path: "tests/**"
+      instructions: "Require coverage for security boundaries, failure paths, idempotency, and externally visible behavior changed by the pull request."
+
+issue_enrichment:
+  auto_enrich:
+    enabled: true
+  planning:
+    enabled: true
+    auto_planning:
+      enabled: true
+      labels:
+        - "plan-me"
+        - "feature"
+        - "enhancement"
+        - "!no-plan"
+  labeling:
+    auto_apply_labels: true
+    labeling_instructions:
+      - label: "bug"
+        instructions: "Incorrect behavior, regressions, runtime failures, broken integrations, or security-relevant defects."
+      - label: "enhancement"
+        instructions: "New capabilities or deliberate improvements to existing behavior."
+      - label: "documentation"
+        instructions: "Documentation-only additions, corrections, or clarification."
