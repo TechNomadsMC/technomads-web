@@ -60,8 +60,8 @@ Issues in Beads are:
 Try Beads in your own projects:
 
 ```bash
-# Install Beads
-curl -sSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/install.sh | bash
+# Install Beads from the published npm package
+npm install -g @beads/bd
 
 # Initialize in your repo
 bd init

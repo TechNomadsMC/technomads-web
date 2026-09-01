@@ -63,6 +63,9 @@ backup/
 # Per-project environment file (Dolt connection config, GH#2520)
 .env
 
+# Clone-local backend identity. Recreate with `bd init` in each clone.
+metadata.json
+
 # Legacy files (from pre-Dolt versions)
 *.db
 *.db?*
@@ -73,5 +76,4 @@ db.sqlite
 bd.db
 # NOTE: Do NOT add negation patterns here.
 # They would override fork protection in .git/info/exclude.
-# Config files (metadata.json, config.yaml) are tracked by git by default
-# since no pattern above ignores them.
+# Shared project configuration remains tracked; clone-local metadata does not.
